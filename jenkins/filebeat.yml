@@ -1,0 +1,8 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/jenkins/audit*.log*
+
+output.logstash:
+  hosts: ["34.254.113.239:5044"]
