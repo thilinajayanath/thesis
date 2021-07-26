@@ -15,22 +15,8 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_iam_role" "role" {
-  name = "${var.instance_name}-role"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
+  name               = "${var.instance_name}-role"
+  assume_role_policy = var.assume_role_policy
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {

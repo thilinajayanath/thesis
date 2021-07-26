@@ -1,3 +1,22 @@
+variable "assume_role_policy" {
+  description = "Assume role for the instance profile"
+  default     = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+  type        = string
+}
+
 variable "instance_count" {
   description = "Number of instance to be created"
   default     = 1
