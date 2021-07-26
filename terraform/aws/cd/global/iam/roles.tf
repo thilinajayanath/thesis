@@ -40,6 +40,9 @@ resource "aws_iam_role" "readonly" {
         "Condition" : {
           "StringEquals" : {
             "SAML:aud" : "https://signin.aws.amazon.com/saml"
+          },
+          "IpAddress" : {
+            "aws:SourceIp" : "78.55.58.8/32"
           }
         }
       }
