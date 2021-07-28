@@ -63,11 +63,11 @@ resource "aws_iam_role" "jenkins" {
       {
         "Effect" : "Allow",
         "Principal" : {
-          "AWS": "arn:aws:iam::751493318674:role/jenkins-role"
+          "AWS" : "arn:aws:iam::751493318674:role/jenkins-role"
         },
         "Action" : "sts:AssumeRole",
         "Condition" : {
-          "IpAddress": {"aws:SourceIp": "54.76.240.216"}
+          "IpAddress" : { "aws:SourceIp" : "54.76.240.216" }
         }
       }
     ]
