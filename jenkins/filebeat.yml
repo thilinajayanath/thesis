@@ -1,8 +1,10 @@
+# Collecting audit logs from jenkins
 filebeat.inputs:
 - type: log
   enabled: true
   paths:
     - /var/log/jenkins/audit*.log*
 
+# Send logs to the logstash instance
 output.logstash:
   hosts: ["34.254.113.239:5044"]
