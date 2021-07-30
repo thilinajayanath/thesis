@@ -45,12 +45,23 @@ resource "aws_security_group" "default_sg" {
   vpc_id      = aws_vpc.platform.id
 }
 
+# Allow outgoing connections to the internet
 resource "aws_security_group_rule" "allow_egress" {
   type              = "egress"
   from_port         = 0
   to_port           = 65535
   protocol          = "all"
   cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.default_sg.id
+}
+
+# Allow incoming connections to Jenkins from the IP 78.55.58.8
+resource "aws_security_group_rule" "allow_ingress_8080" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "all"
+  cidr_blocks       = ["78.55.58.8/32"]
   security_group_id = aws_security_group.default_sg.id
 }
 
